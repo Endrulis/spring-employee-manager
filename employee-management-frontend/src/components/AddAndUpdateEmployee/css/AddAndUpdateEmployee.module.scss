@@ -1,0 +1,106 @@
+.container {
+    display: flex;
+    justify-content: center;
+    max-width: 42rem;
+    margin: 0 auto;
+    margin-top:4rem;
+    margin-right:10px auto;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    border-bottom: 1px solid #ddd;
+}
+
+.form {
+    max-width: 42rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.title {
+    font-weight: 100;
+    line-height: 2rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.label {
+    display: block;
+    color: "#4B5563";
+    font-size: 0.875rem;
+    font-weight: normal;
+    margin-bottom: 0.1rem;
+}
+
+.input {
+    width: 24rem;
+    height: 2.5rem;
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+
+}
+.emailInput {
+    padding: 0 1rem;
+}
+
+.error {
+    position: absolute;
+    color: #d8000c;
+    font-size: 0.875rem;
+    bottom: 2.2rem;
+    right: 0;
+}
+
+.btnGroup {
+    position: relative;
+    height: 3.5rem;
+    width: 100%;
+    margin: 1rem 0;
+    .label{
+        display:block;
+        color:rgb(75 85 99);
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight:400;  
+    }
+    .btn {
+        margin-right: 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 0.5rem 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        margin-top:0.5rem;
+
+        &.primary {
+            background-color: #48bb78;
+            color: #fff;
+
+            &:hover {
+                background-color: #2f855a;
+            }
+        }
+
+        &.secondary {
+            background-color: #cbd5e0;
+            color: #4a5568;
+
+            &:hover {
+                background-color: #a0aec0;
+            }
+        }
+
+        &.danger {
+            background-color: #f56565;
+            color: #fff;
+
+            &:hover {
+                background-color: #c53030;
+            }
+        }
+    }
+}
