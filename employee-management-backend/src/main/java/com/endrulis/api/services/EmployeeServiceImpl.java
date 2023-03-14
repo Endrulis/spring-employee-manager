@@ -13,16 +13,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+    public EmployeeServiceImpl( EmployeeRepository employeeRepository ) {
         this.employeeRepository = employeeRepository;
     }
 
     @Override
-    public EmployeeDTO createEmployee(@NotNull @Valid EmployeeDTO employeeDTO ) {
+    public EmployeeDTO createEmployee( @NotNull @Valid EmployeeDTO employeeDTO ) {
         EmployeeEntity employeeEntity = new EmployeeEntity();
         BeanUtils.copyProperties(employeeDTO, employeeEntity);
         employeeRepository.save(employeeEntity);
@@ -46,14 +46,14 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public boolean deleteEmployee(@NotNull Long id ) {
+    public boolean deleteEmployee( @NotNull Long id ) {
         EmployeeEntity employee = employeeRepository.findById(id).get();
         employeeRepository.delete(employee);
         return true;
     }
 
     @Override
-    public EmployeeDTO getEmployeeById(@NotNull Long id ) {
+    public EmployeeDTO getEmployeeById( @NotNull Long id ) {
         EmployeeEntity employeeEntity
                 = employeeRepository.findById(id).get();
         EmployeeDTO employeeDTO = new EmployeeDTO();
@@ -62,7 +62,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public EmployeeDTO updateEmployee(@NotNull Long id, @NotNull @Valid EmployeeDTO employeeDTO ) {
+    public EmployeeDTO updateEmployee( @NotNull Long id, @NotNull @Valid EmployeeDTO employeeDTO ) {
         EmployeeEntity employeeEntity
                 = employeeRepository.findById(id).get();
         employeeEntity.setEmail(employeeDTO.getEmail());

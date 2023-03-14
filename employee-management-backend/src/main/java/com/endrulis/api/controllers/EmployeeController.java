@@ -19,14 +19,14 @@ import java.util.Map;
 public class EmployeeController {
     private final EmployeeService employeeService;
 
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController( EmployeeService employeeService ) {
         this.employeeService = employeeService;
     }
 
     @PostMapping("/employees")
-    public ResponseEntity<EmployeeDTO> createEmployee(@Valid @RequestBody EmployeeDTO employee,
-                                            BindingResult result) {
-        if(result.hasErrors()) {
+    public ResponseEntity<EmployeeDTO> createEmployee( @Valid @RequestBody EmployeeDTO employee,
+                                                       BindingResult result ) {
+        if (result.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
             result.getFieldErrors().forEach(error ->
                     errors.put(error.getField(), error.getDefaultMessage()));
@@ -43,25 +43,25 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/employees/{id}")
-    public ResponseEntity<Map<String,Boolean>> deleteEmployee( @PathVariable Long id) {
+    public ResponseEntity<Map<String, Boolean>> deleteEmployee( @PathVariable Long id ) {
         boolean deleted = false;
         deleted = employeeService.deleteEmployee(id);
-        Map<String,Boolean> response = new HashMap<>();
+        Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", deleted);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/employees/{id}")
-    public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Long id) {
+    public ResponseEntity<EmployeeDTO> getEmployeeById( @PathVariable Long id ) {
         EmployeeDTO employee = null;
         employee = employeeService.getEmployeeById(id);
         return ResponseEntity.ok(employee);
     }
 
     @PutMapping("/employees/{id}")
-    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long id,
-                                                      @Valid @RequestBody EmployeeDTO employee,
-                                                      BindingResult result) {
+    public ResponseEntity<EmployeeDTO> updateEmployee( @PathVariable Long id,
+                                                       @Valid @RequestBody EmployeeDTO employee,
+                                                       BindingResult result ) {
         if (result.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
             result.getFieldErrors().forEach(error ->

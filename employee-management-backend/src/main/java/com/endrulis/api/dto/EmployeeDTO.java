@@ -1,4 +1,5 @@
 package com.endrulis.api.dto;
+
 import javax.validation.constraints.*;
 
 public class EmployeeDTO {
@@ -17,13 +18,27 @@ public class EmployeeDTO {
     }
 
     public EmployeeDTO( @Positive Long id, @NotBlank String firstName, @NotBlank String lastName, @NotNull @Email String email ) {
+        if (id == null || id <= 0)
+            throw new IllegalArgumentException("Id must be greater than zero");
+        if (firstName == null || firstName.trim().isEmpty())
+            throw new IllegalArgumentException("First name cannot be null or empty");
+        if (lastName == null || lastName.trim().isEmpty())
+            throw new IllegalArgumentException("Last name cannot be null or empty");
+        if (email == null || email.trim().isEmpty())
+            throw new IllegalArgumentException("Email cannot be null or empty");
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    public EmployeeDTO(@NotBlank String firstName, @NotBlank String lastName, @NotNull @Email String email ) {
+    public EmployeeDTO( @NotBlank String firstName, @NotBlank String lastName, @NotNull @Email String email ) {
+        if (firstName == null || firstName.trim().isEmpty())
+            throw new IllegalArgumentException("First name cannot be null or empty");
+        if (lastName == null || lastName.trim().isEmpty())
+            throw new IllegalArgumentException("Last name cannot be null or empty");
+        if (email == null || email.trim().isEmpty())
+            throw new IllegalArgumentException("Email cannot be null or empty");
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
