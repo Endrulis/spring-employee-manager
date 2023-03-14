@@ -1,25 +1,11 @@
 import React from "react";
 const Navbar = () => {
   return (
-    <div style={{ backgroundColor: "#1f2937" }}>
-      <div
-        style={{
-          height: "4rem",
-          paddingLeft: "2rem",
-          paddingRight: "2rem",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+    <div class="bg-gray-800">
+      <div class="h-16 px-4 flex items-center">
         <a
           href="/employeeList"
-          style={{
-            color: "#fff",
-            fontWeight: "700",
-            fontSize: "1.125rem",
-            lineHeight: "1.75rem",
-            textDecoration: "none",
-          }}
+          class="text-white font-semibold text-lg no-underline"
         >
           Employee Management System
         </a>
