@@ -13,17 +13,21 @@ public class EmployeeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     @NotNull(message = "Name cannot be null")
     @NotBlank(message = "First name is mandatory")
     @Size(min = 2, max = 50, message = "First name must be between 2 and 50 characters")
     private String firstName;
-    @Column(name = "surname")
+    @Column(name = "surname", nullable = false)
     @NotNull(message = "Last name cannot be null")
     @NotBlank(message = "Last name is mandatory")
     @Size(min = 2, max = 50, message = "Last name must be between 2 and 50 characters")
     private String lastName;
-    @Column(name = "email")
+    @Column(name = "email",
+            nullable = false,
+            unique = true,
+            columnDefinition = "VARCHAR(255) CHECK (email REGEXP '^[a-zA-Z0-9._%+-]+\\@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,63}$')"
+    )
     @NotNull(message = "Email cannot be null")
     @NotBlank(message = "Email ID is mandatory")
     @Email(message = "Invalid email address")
